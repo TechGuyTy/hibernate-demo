@@ -17,6 +17,8 @@
 		<!-- List of XML mapping files -->
 		<mapping resource="co/grandcircus/david/hibernate1/model/Person.hbm.xml" />
 		<mapping resource="co/grandcircus/david/hibernate1/model/Course.hbm.xml" />
+		<!-- List of classes mapped with annotations -->
+		<mapping class="co.grandcircus.david.hibernate1.model.CoffeeMachine" />
 
 	</session-factory>
 </hibernate-configuration>

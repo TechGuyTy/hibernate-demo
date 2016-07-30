@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.junit.Test;
 
 import co.grandcircus.david.hibernate1.config.HibernateConfigurer;
+import co.grandcircus.david.hibernate1.model.CoffeeMachine;
 import co.grandcircus.david.hibernate1.model.Course;
 import co.grandcircus.david.hibernate1.model.Person;
 
@@ -38,6 +39,15 @@ public class FillDatabaseTest {
 			session.save(buildStudent("James Watt", javaCourse));
 			session.save(buildStudent("Thomas Edison", javaCourse));
 			session.save(buildStudent("Henry Ford", javaCourse));
+			
+			CoffeeMachine coffeeMachine = new CoffeeMachine();
+			coffeeMachine.setFloor(3);
+			coffeeMachine.setRequiresManualWaterFill(false);
+			session.save(coffeeMachine);
+			coffeeMachine = new CoffeeMachine();
+			coffeeMachine.setFloor(4);
+			coffeeMachine.setRequiresManualWaterFill(true);
+			session.save(coffeeMachine);
 		}
 	}
 	
