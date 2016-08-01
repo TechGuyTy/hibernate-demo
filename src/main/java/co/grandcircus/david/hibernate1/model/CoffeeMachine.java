@@ -72,4 +72,11 @@ public class CoffeeMachine {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "CoffeeMachine [id=" + id + ", floor=" + floor + ", requiresManualWaterFill=" + requiresManualWaterFill
+				+ "]";
+	}
+
+	
 }
