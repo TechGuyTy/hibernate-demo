@@ -2,6 +2,9 @@ package co.grandcircus.david.hibernate1.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,13 +23,21 @@ public class PersonDaoImpl implements PersonDao {
 		}
 	}
 
+	/**
+	 * Finds the user with the given name
+	 * 
+	 * @returns the user or null if no user with the given name
+	 * @throws NonUniqueResultException if more than one person is found with the given name
+	 */
 	@Override
-	public Person getPersonByName(String name) {
+	public Person getPersonByName(String name) throws NonUniqueResultException {
 		Session session = sessionFactory.openSession();
 		try {
 			return session.createQuery("from Person where name = :name", Person.class)
 				.setParameter("name", name)
 				.getSingleResult();
+		} catch (NoResultException ex) {
+			return null;
 		} finally {
 			session.close();
 		}
@@ -123,7 +134,6 @@ public class PersonDaoImpl implements PersonDao {
 			transaction = session.beginTransaction();
 			Person person = session.get(Person.class, id);
 			session.delete(person);
-			session.flush();
 			transaction.commit();
 		} finally {
 			session.close();

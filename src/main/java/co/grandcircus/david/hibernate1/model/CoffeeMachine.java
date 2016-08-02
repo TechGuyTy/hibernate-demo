@@ -17,8 +17,10 @@ public class CoffeeMachine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	Integer id;
+	
 	@Column(name = "FLOOR")
 	int floor;
+	
 	@Column(name = "MANUAL_WATER_FILL")
 	@Type(type = "true_false")
 	boolean requiresManualWaterFill;
