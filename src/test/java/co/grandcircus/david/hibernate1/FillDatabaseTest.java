@@ -51,14 +51,6 @@ public class FillDatabaseTest {
 		}
 	}
 	
-	@Test
-	public void clearDatabase() {
-		try (Session session = sessionFactory.openSession()) {
-			session.createQuery("delete from Person").executeUpdate();
-			session.createQuery("delete from Course").executeUpdate();
-		}
-	}
-	
 	private Person buildStudent(String name, Course course) {
 		Person person = new Person();
 		person.setName(name);
