@@ -1,3 +1,4 @@
+# Hibernate Labs
 ## Lab 1: Hibernate Basics
 - Add an entity to list working spaces. (Use XML config.) It includes
   - An auto-generated ID
